@@ -53,7 +53,6 @@
         slippi-launcher
         gecko
         powerpc-eabi-assembling
-        slippi-netplay-chat-edition
         gcmtool
         projectplus-sdcard
         projectplus-config
@@ -154,7 +153,7 @@
         };
         config = {
           nixpkgs.overlays = [self.overlays.default];
-          home.packages = [(mkIf cfg.slippi-launcher.enable pkgs.slippi-launcher)];
+          home.packages = [(mkIf cfg.slippi-launcher.enable pkgs.slippi-launcher) ];
           xdg.configFile."Slippi Launcher/Settings".source = let
             jsonFormat = pkgs.formats.json {};
           in
@@ -168,14 +167,15 @@
                 useMonthlySubfolders = cfg.slippi-launcher.useMonthlySubfolders;
                 spectateSlpPath = cfg.slippi-launcher.spectateSlpPath;
                 extraSlpPaths = cfg.slippi-launcher.extraSlpPaths;
-                # Netplay
-                netplayDolphinPath = cfg.slippi-launcher.netplayDolphinPath;
-                # Playback
-                playbackDolphinPath = cfg.slippi-launcher.playbackDolphinPath;
                 # Advanced settings
                 autoUpdateLauncher = false;
               };
             };
+          
+          xdg.configFile."Slippi Launcher/netplay/Slippi_Online-x86_64.AppImage".source = 
+            (cfg.slippi-launcher.netplayDolphinPath + "/bin/slippi-netplay");
+          xdg.configFile."Slippi Launcher/playback/Slippi_Playback-x86_64.AppImage".source = 
+            (cfg.slippi-launcher.playbackDolphinPath + "/bin/slippi-playback");
         };
       };
   };
