@@ -1,5 +1,13 @@
 ![](https://img.shields.io/github/workflow/status/6AA4FD/ssbm-nix/builds)
 
+# Warning
+
+This repository is essentially deprecated. I now use and maintain
+https://github.com/lytedev/slippi-nix instead for playing Super Smash Bros.
+Melee online via Slippi.
+
+This flake is still potentially useful for other use-cases.
+
 # ssbm-nix
 Nix expressions for Super Smash Bros. Melee players.
 
